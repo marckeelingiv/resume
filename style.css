@@ -511,7 +511,7 @@ body {
 }
 
 .experience-card:hover .experience-content {
-  max-height: 24rem;
+  max-height: 35rem;
 }
 
 .experience-description {
