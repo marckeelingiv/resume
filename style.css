@@ -611,13 +611,16 @@ body {
 .education-grid {
   max-width: 800px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 2rem;
 }
 
 .education-card {
   text-align: center;
+  flex: 1 1 320px;
+  max-width: 350px;
 }
 
 .education-icon {
@@ -729,9 +732,6 @@ body {
     grid-template-columns: 1fr 1fr;
   }
   
-  .education-grid {
-    grid-template-columns: 1fr 1fr;
-  }
 }
 
 @media (max-width: 1023px) {
