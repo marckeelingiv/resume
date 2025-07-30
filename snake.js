@@ -47,7 +47,22 @@ function initializeGame() {
     changingDirection = false;
     generateFood();
     if (gameLoop) clearInterval(gameLoop);
-    gameLoop = setInterval(main, 100);
+
+    const countdownElement = document.getElementById('countdown');
+    let count = 3;
+    countdownElement.style.display = 'flex';
+    countdownElement.textContent = count;
+
+    const countdownInterval = setInterval(() => {
+        count--;
+        if (count > 0) {
+            countdownElement.textContent = count;
+        } else {
+            clearInterval(countdownInterval);
+            countdownElement.style.display = 'none';
+            gameLoop = setInterval(main, 100);
+        }
+    }, 1000);
 }
 
 // Main game loop
