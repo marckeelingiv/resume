@@ -9,6 +9,7 @@
     <meta name="keywords" content="Data Engineer, Principal Data Engineer, Analytics, Marc Keeling IV, Portfolio">
     <meta name="author" content="Marc Keeling IV">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="snake.css">
 </head>
 <body>
     <main class="min-h-screen">
@@ -52,6 +53,12 @@
                             <span class="nav-label">Contact</span>
                         </button>
                     </li>
+                    <li>
+                        <button class="nav-item" id="sqlSnakeBtn" title="SQL Snake">
+                            <span class="nav-dot"></span>
+                            <span class="nav-label">SQL Snake</span>
+                        </button>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -85,6 +92,9 @@
                     </li>
                     <li>
                         <button class="mobile-nav-item" data-section="contact">Contact</button>
+                    </li>
+                    <li>
+                        <button class="mobile-nav-item" id="mobileSqlSnakeBtn">SQL Snake</button>
                     </li>
                 </ul>
             </div>
@@ -478,6 +488,16 @@
         </footer>
     </main>
 
+    <!-- SQL Snake Game Modal -->
+    <div id="sqlSnakeModal" class="modal-overlay">
+        <div class="modal-content">
+            <button id="closeSqlSnakeModal" class="modal-close-btn">&times;</button>
+            <h2>SQL Snake</h2>
+            <canvas id="gameCanvas" width="400" height="400"></canvas>
+        </div>
+    </div>
+
     <script src="script.js"></script>
+    <script src="snake.js"></script>
 </body>
 </html>
