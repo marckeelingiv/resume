@@ -160,3 +160,48 @@ function isGamePaused() {
 document.addEventListener('keydown', changeDirection);
 sqlSnakeBtn?.addEventListener('click', initializeGame);
 mobileSqlSnakeBtn?.addEventListener('click', initializeGame);
+
+// Swipe controls for mobile
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+
+canvas.addEventListener('touchstart', function(event) {
+    touchStartX = event.changedTouches[0].screenX;
+    touchStartY = event.changedTouches[0].screenY;
+}, false);
+
+canvas.addEventListener('touchend', function(event) {
+    touchEndX = event.changedTouches[0].screenX;
+    touchEndY = event.changedTouches[0].screenY;
+    handleSwipe();
+}, false);
+
+function handleSwipe() {
+    const dx = touchEndX - touchStartX;
+    const dy = touchEndY - touchStartY;
+    const absDx = Math.abs(dx);
+    const absDy = Math.abs(dy);
+
+    if (Math.max(absDx, absDy) > 50) { // Threshold for swipe
+        const goingUp = direction === 'up';
+        const goingDown = direction === 'down';
+        const goingLeft = direction === 'left';
+        const goingRight = direction === 'right';
+
+        if (absDx > absDy) {
+            if (dx > 0 && !goingLeft) {
+                direction = 'right';
+            } else if (!goingRight) {
+                direction = 'left';
+            }
+        } else {
+            if (dy > 0 && !goingUp) {
+                direction = 'down';
+            } else if (!goingDown) {
+                direction = 'up';
+            }
+        }
+    }
+}
