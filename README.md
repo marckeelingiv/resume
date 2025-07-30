@@ -1,201 +1,94 @@
+(801) 635-8987								1757 N Parsley Ct  
+MarcKeelingIV@Outlook.com						Saratoga Springs UT
 
-# Marc Keeling IV - Portfolio Website
+## EXPERIENCE
 
-A clean, professional portfolio website showcasing Marc Keeling IV's experience as a Principal Data Engineer. This is a **pure static website** built with HTML, CSS, and JavaScript - no build tools or dependencies required!
+### Principal Data Engineer at Point Click Care (Jan 2025 \- Present)
 
-## ✨ Features
+* Accelerated adoption of modern analytics engineering and reduce repetitive dev work  
+* Fostering and encouraging AI driven workflows and tool adoption  
+* Hosted weekly dbt workshops, creating an AI “prompt library” for code generation, and set coding/documentation standards  
+* Currently preparing team to migrate to the cloud. Dockerized and k8s ready with CI/CD enabled  
+* Trained team of 6 data engineers how to build data robust pipelines  
+* Reduced repetitive coding by 50%, sped up report/model deployment, and fostered a culture of innovation for 20+ data scientists and analysts  
+* Cut data delivery from 7 days to 5 minutes, boosted query speeds by 3000–4000%, and saved $500K annually  
+* Achieved \>100x faster queries, enabled real-time analytics, and standardized best practices across teams
 
-- **🎨 Professional Design**: Dark theme with clean typography and modern styling
-- **📱 Fully Responsive**: Works perfectly on desktop, tablet, and mobile devices
-- **🧭 Smart Navigation**: Desktop side navigation with mobile hamburger menu
-- **✨ Smooth Animations**: Scroll-triggered animations using Intersection Observer API
-- **📋 Copy to Clipboard**: One-click contact information copying
-- **⚡ Zero Dependencies**: Pure HTML/CSS/JS - no build process required
-- **🚀 Fast Loading**: Optimized for performance with minimal file sizes
-- **♿ Accessible**: ARIA labels, keyboard navigation, and semantic HTML
+### Sr. Data Engineer at Point Click Care (Sept 2021 \- Present)
 
-## 📁 File Structure
+* Designed and oversaw implementation of Data Warehouse with more than 35 Billion rows of data  
+* Enabled clear monitoring of 100s of interjoining data pipelines and associated key metrics  
+* Instructed team of 20 analysts on usage of dbt (data build tool)  
+* Selected hardware/software stack to meet analysis needs. Up to 4000% faster query performance.  
+* Technologies used: Docker, Clickhouse, Dagster, dbt, Airbyte  
+* Automated 30+ reports saving 1.6 FTEs  
+* Trained other Data Engineers on best practices, making them effective contributors. 
 
-```
-marc_keeling_portfolio_static/
-├── index.html          # Main HTML file with complete portfolio
-├── style.css           # All styling including responsive design
-├── script.js           # JavaScript for interactivity and animations
-└── README.md           # This documentation file
-```
+### Sr. BI Data Engineer at United Health/Optum (Jan 2019 \- Sept 2021\)
 
-### File Descriptions
+* Designed/implemented ETL scripts to facilitate BI insights  
+* Used Python to parse log files in order to create data lineage map  
+* Created custom Flask backed Qlik Sense Testing Framework to increase deployment/development velocity  
+* Increased the accuracy of estimates to customers as Scrum Master  
+* Conducted research into alternative BI solutions to meet current and future business needs  
+* Designed CI/CD BI pipeline in order to decrease deployment errors  
+* Created data testing, documentation, and profiling to reduce pipeline debt
 
-- **`index.html`**: Complete portfolio structure with sections for hero, about, experience, skills, education, and contact
-- **`style.css`**: Comprehensive styling with CSS variables, responsive design, and smooth animations
-- **`script.js`**: Interactive functionality including navigation, animations, and copy-to-clipboard
-- **`README.md`**: Documentation and deployment instructions
+### Product Owner/Manager at Celtic Bank (April 2018 – Sept 2018\)
 
-## 🚀 Quick Start
+* Implemented process change to save 95 hours per week and $173K per year for loan processing team  
+* Created dashboard solutions using Power BI  
+* Product Owner in Agile Framework
 
-### Option 1: Direct Browser Opening
-1. Download all files to a folder
-2. Double-click `index.html` to open in your browser
-3. That's it! The website will work immediately
+### Business Intelligence Engineer at Zions Bancorp (May 2015 – April 2018\)
 
-### Option 2: Local Server (Recommended)
-```bash
-# Navigate to the project folder
-cd marc_keeling_portfolio_static
+* Automated user provisioning process saving 82+ man hours per week and $225K/ year  
+* Maintained Business Objects, QlikView, and Tableau Servers. (8,200+ users)  
+* Developed and deployed Tableau Dashboards for reporting purposes  
+* Created Business Objects Universes using IDT (Information Design Tool)  
+* Recovered and upgraded Business Objects platform  
+* Reduced QlikView server memory usage programmatically thereby improving user experience  
+* Analyzed Business Objects metadata to identify 24,000 reports for cleanup. Reduced storage by 50%
 
-# Start a simple HTTP server (Python 3)
-python -m http.server 8000
+### National Guard, Sgt., Secret Security Clearance (Feb 2006–May 2017\)
 
-# Or with Python 2
-python -m SimpleHTTPServer 8000
+* Deployment to Afghanistan 2012-2013  
+* Managed $4+ million in inventory. Decreased expenditures by decreasing expediting of parts  
+* Managed work hours for company of 70+ soldiers  
+* Organized/prioritized ground support equipment decreasing the down time due to maintenance  
+* Production & Control Manager for fleet of 21 Apache helicopters
 
-# Or with Node.js (if you have it installed)
-npx http-server -p 8000
+## EDUCATION \- University Of Utah
 
-# Open browser to http://localhost:8000
-```
+## 
 
-## 🌐 Deployment Options
+### Master of Science in Information Systems
 
-### GitHub Pages (Free)
-1. Create a new GitHub repository
-2. Upload all files to the repository
-3. Go to Settings → Pages
-4. Select "Deploy from a branch" → "main" → "/ (root)"
-5. Your site will be available at `https://yourusername.github.io/repository-name`
+### Graduate Certificate in Business Analytics
 
-### Netlify (Free)
-1. Go to [Netlify](https://netlify.com)
-2. Drag and drop the project folder onto the deployment area
-3. Your site will be live instantly with a custom URL
-4. Optional: Connect to GitHub for automatic deployments
+## OTHER EXPERIENCES/TRAINING
 
-### Vercel (Free)
-1. Go to [Vercel](https://vercel.com)
-2. Import your GitHub repository or upload files
-3. Deploy with zero configuration
-4. Custom domain support available
+### National Guard Training
 
-### Any Static Host
-Since this is a pure static website, it will work on any hosting service:
-- AWS S3 + CloudFront
-- Google Cloud Storage
-- Azure Static Web Apps
-- Cloudflare Pages
-- Surge.sh
-- Firebase Hosting
+* Noncommissioned officer courses.   
+* Leadership & Risk Management
 
-## 🎨 Customization
 
-### Colors
-Edit the CSS variables in `style.css`:
-```css
-:root {
-  --background: #121212;     /* Main background */
-  --text-primary: #E0E0E0;   /* Primary text */
-  --accent: #00BFFF;         /* Accent color (blue) */
-  --text-secondary: #B0B0B0; /* Secondary text */
-  --card-bg: #1E1E1E;        /* Card backgrounds */
-  --border: #2A2A2A;         /* Border color */
-}
-```
+## SKILLS
 
-### Content
-Update personal information in `index.html`:
-- Name and title in the hero section
-- Contact information (email, phone, location)
-- About me paragraph
-- Experience details
-- Skills lists
-- Education information
+## 
 
-### Images
-Replace the headshot image URL in `index.html`:
-```html
-<img src="YOUR_IMAGE_URL_HERE" alt="Your Name - Professional Headshot">
-```
+### Experience in
 
-### Typography
-Change the font by updating the Google Fonts import in `style.css`:
-```css
-@import url('https://fonts.googleapis.com/css2?family=YourFont:wght@300;400;500;600;700&display=swap');
-```
+* ETL, DBT, Python, SQL, Scaled Agile Framework, Business Objects, Six-Sigma, Qlik Sense, Tableau, Power BI, Feature Engineering, Data Mining, Data Visualization, Automation
 
-## 🛠 Technical Details
+### Working Knowledge of
 
-### Browser Compatibility
-- **Modern Browsers**: Full support (Chrome 60+, Firefox 55+, Safari 12+, Edge 79+)
-- **Features Used**:
-  - CSS Grid and Flexbox
-  - CSS Custom Properties (variables)
-  - Intersection Observer API
-  - Clipboard API with fallback
+* Data Warehousing (Kimball), Linux, Docker, JavaScript, HTML, PySpark, Hadoop, Dash, Scala, Statistical Modeling, Machine Learning, TensorFlow
 
-### Performance Features
-- **Optimized CSS**: Single stylesheet with minimal unused code
-- **Efficient JavaScript**: Vanilla JS with debounced scroll events
-- **Image Optimization**: Responsive images with proper sizing
-- **Minimal Dependencies**: Zero external JavaScript libraries
+### Certifications
 
-### Accessibility Features
-- Semantic HTML structure
-- ARIA labels for interactive elements
-- Keyboard navigation support
-- High contrast color scheme
-- Screen reader friendly
-
-## 🐛 Troubleshooting
-
-### Common Issues
-
-**Animations not working:**
-- Ensure JavaScript is enabled in your browser
-- Check browser console for any errors
-- Verify all files are in the same directory
-
-**Navigation not working:**
-- Check that all section IDs match the navigation data-section attributes
-- Ensure JavaScript file is loaded correctly
-
-**Copy button not working:**
-- Modern browsers required for Clipboard API
-- Fallback method included for older browsers
-- Check browser permissions for clipboard access
-
-**Mobile menu not opening:**
-- Verify JavaScript is loaded
-- Check for any console errors
-- Ensure mobile viewport is properly set
-
-### Browser Console
-Open browser developer tools (F12) and check the Console tab for any error messages.
-
-## 📱 Mobile Optimization
-
-- Responsive breakpoints at 1024px, 768px, and 480px
-- Touch-friendly navigation and buttons
-- Optimized text sizes for mobile reading
-- Collapsible mobile menu with overlay
-
-## 🎯 SEO Features
-
-- Semantic HTML structure
-- Meta tags for description and keywords
-- Proper heading hierarchy (H1, H2, H3)
-- Alt text for images
-- Clean URL structure
-
-## 📞 Contact Information
-
-**Marc Keeling IV**
-- Email: MarcKeelingIV@Outlook.com
-- Phone: (801) 635-8987
-- Location: Saratoga Springs, UT
-
-## 📄 License
-
-This portfolio website is for Marc Keeling IV. The code structure and design patterns are available for reference and learning purposes.
-
----
-
-**🚀 Ready to deploy!** This website requires no build process, no dependencies, and works on any static hosting platform. Simply upload the files and you're live!
+* Azure Fundamentals(AZ-900) Azure Data Fundamentals(DP-900) Azure Data Engineer(DP-203)  
+* Graduate Certificate in Business Intelligence from University of Utah. (Obtained August 2018\)  
+* Green Belt Lean Six Sigma from University of Utah. (Obtained July 2017\)  
+* Secret Security Clearance (Expires May 2027\)
