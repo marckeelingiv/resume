@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Framework for Principled Civic Media — Strategy Document</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,400;1,9..144,600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f1e9d4;
+    --paper-shadow: #e6dcc1;
+    --ink: #1a1f2e;
+    --ink-muted: #4a4d5a;
+    --ink-faint: #7a7c85;
+    --crimson: #8b2127;
+    --crimson-dark: #5a1418;
+    --forest: #3d6650;
+    --ochre: #a87c2c;
+    --rule: #1a1f2e;
+    --rule-faint: rgba(26, 31, 46, 0.18);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    background-image:
+      radial-gradient(ellipse at top left, rgba(168, 124, 44, 0.04) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom right, rgba(139, 33, 39, 0.03) 0%, transparent 50%);
+    color: var(--ink);
+    font-family: 'Newsreader', 'Iowan Old Style', Georgia, serif;
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 1.65;
+    min-height: 100vh;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* Subtle paper texture */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.15 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: multiply;
+  }
+
+  .container {
+    position: relative;
+    z-index: 2;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ============ MASTHEAD ============ */
+  .masthead {
+    padding: 80px 0 60px;
+    border-bottom: 3px double var(--rule);
+    margin-bottom: 60px;
+    position: relative;
+  }
+
+  .masthead-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--rule-faint);
+    margin-bottom: 48px;
+  }
+
+  .masthead-meta span:first-child::before {
+    content: '✦ ';
+    color: var(--crimson);
+  }
+
+  .masthead-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(48px, 8vw, 104px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 32px;
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+  }
+
+  .masthead-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--crimson);
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+  }
+
+  .masthead-subtitle {
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+    font-size: clamp(20px, 2.4vw, 26px);
+    line-height: 1.4;
+    color: var(--ink-muted);
+    max-width: 720px;
+    font-weight: 300;
+  }
+
+  .masthead-byline {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule-faint);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* ============ INTRODUCTION ============ */
+  .introduction {
+    max-width: 680px;
+    margin: 0 auto 80px;
+    padding: 0 16px;
+  }
+
+  .intro-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--crimson);
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .intro-text {
+    font-size: 21px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+
+  .intro-text p {
+    margin-bottom: 24px;
+  }
+
+  .intro-text p:first-child::first-letter {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 88px;
+    line-height: 0.85;
+    float: left;
+    padding: 8px 14px 0 0;
+    color: var(--crimson);
+  }
+
+  /* ============ SECTIONS ============ */
+  .section {
+    margin-bottom: 100px;
+    position: relative;
+  }
+
+  .section-header {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 32px;
+    align-items: baseline;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--rule-faint);
+  }
+
+  .section-number {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 56px;
+    line-height: 1;
+    color: var(--crimson);
+    letter-spacing: -0.02em;
+  }
+
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    font-variation-settings: "opsz" 72;
+  }
+
+  .section-body {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 32px;
+  }
+
+  .section-aside {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    line-height: 1.6;
+    padding-top: 6px;
+  }
+
+  .section-aside strong {
+    display: block;
+    color: var(--crimson);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .section-content {
+    max-width: 720px;
+  }
+
+  .section-content p {
+    margin-bottom: 20px;
+    color: var(--ink);
+  }
+
+  .section-content em {
+    color: var(--crimson);
+    font-style: italic;
+  }
+
+  .section-content strong {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* ============ DIAGRAM CONTAINER ============ */
+  .diagram-frame {
+    margin: 40px 0 0;
+    padding: 48px 32px;
+    background: linear-gradient(180deg, #ebe2c8 0%, #e6dcc1 100%);
+    border: 1px solid var(--rule-faint);
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.5) inset,
+      0 20px 40px -20px rgba(26, 31, 46, 0.15);
+    position: relative;
+    overflow-x: auto;
+  }
+
+  .diagram-frame::before {
+    content: '';
+    position: absolute;
+    top: 8px; left: 8px; right: 8px; bottom: 8px;
+    border: 1px solid var(--rule-faint);
+    pointer-events: none;
+  }
+
+  .diagram-frame .mermaid {
+    text-align: center;
+    font-family: 'Newsreader', serif !important;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ============ PULL QUOTE ============ */
+  .pull-quote {
+    margin: 60px auto;
+    max-width: 800px;
+    padding: 32px 0;
+    text-align: center;
+    border-top: 1px solid var(--rule-faint);
+    border-bottom: 1px solid var(--rule-faint);
+    position: relative;
+  }
+
+  .pull-quote::before,
+  .pull-quote::after {
+    content: '✦';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--paper);
+    padding: 0 16px;
+    color: var(--crimson);
+    font-size: 14px;
+  }
+
+  .pull-quote::before { top: -8px; }
+  .pull-quote::after { bottom: -8px; }
+
+  .pull-quote p {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(22px, 3vw, 32px);
+    line-height: 1.35;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+
+  .pull-quote em {
+    color: var(--crimson);
+    font-weight: 400;
+  }
+
+  /* ============ OPEN QUESTIONS ============ */
+  .questions {
+    margin-top: 120px;
+    padding: 60px 0 40px;
+    border-top: 3px double var(--rule);
+  }
+
+  .questions-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .questions-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--crimson);
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .questions-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.1;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+
+  .questions-list {
+    max-width: 760px;
+    margin: 0 auto;
+    list-style: none;
+  }
+
+  .questions-list li {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 24px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--rule-faint);
+  }
+
+  .questions-list li:last-child { border-bottom: none; }
+
+  .question-num {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 36px;
+    line-height: 1;
+    color: var(--crimson);
+  }
+
+  .question-body {
+    font-size: 19px;
+    line-height: 1.55;
+  }
+
+  .question-body strong {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 22px;
+    display: block;
+    margin-bottom: 6px;
+    color: var(--ink);
+  }
+
+  /* ============ COLOPHON ============ */
+  .colophon {
+    margin-top: 100px;
+    padding: 48px 0 80px;
+    text-align: center;
+    border-top: 1px solid var(--rule-faint);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    line-height: 2;
+  }
+
+  .colophon-ornament {
+    font-size: 16px;
+    color: var(--crimson);
+    margin-bottom: 16px;
+    letter-spacing: 0.5em;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 768px) {
+    body { font-size: 17px; }
+    .container { padding: 0 20px; }
+    .masthead { padding: 48px 0 40px; }
+    .masthead-meta { flex-direction: column; gap: 8px; align-items: flex-start; }
+    .section-header,
+    .section-body {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .section-number {
+      font-size: 36px;
+    }
+    .section-aside {
+      padding-left: 12px;
+      border-left: 2px solid var(--crimson);
+    }
+    .diagram-frame { padding: 28px 16px; }
+    .questions-list li { grid-template-columns: 40px 1fr; gap: 16px; }
+  }
+
+  /* ============ ANIMATIONS ============ */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .masthead-title { animation: fadeUp 1s ease-out both; }
+  .masthead-subtitle { animation: fadeUp 1s ease-out 0.15s both; }
+  .masthead-byline { animation: fadeUp 1s ease-out 0.3s both; }
+
+  /* Mermaid overrides */
+  .mermaid svg {
+    max-width: 100% !important;
+    height: auto !important;
+    font-family: 'Newsreader', serif !important;
+  }
+
+  .mermaid .nodeLabel,
+  .mermaid .edgeLabel {
+    font-family: 'Newsreader', serif !important;
+    font-size: 14px !important;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ============ MASTHEAD ============ -->
+  <header class="masthead">
+    <div class="masthead-meta">
+      <span>Strategy Document &middot; Vol. I</span>
+      <span>Issue No. 01</span>
+    </div>
+    <h1 class="masthead-title">
+      A Framework<br>
+      for <em>Principled</em><br>
+      Civic Media
+    </h1>
+    <p class="masthead-subtitle">
+      Reimagining a moderate Republican group as a media-first organization that earns trust through consistency — and converts that trust into political consequence.
+    </p>
+    <div class="masthead-byline">
+      <span>Prepared for internal review</span>
+      <span>Twelve diagrams &middot; one thesis</span>
+    </div>
+  </header>
+
+  <!-- ============ INTRODUCTION ============ -->
+  <section class="introduction">
+    <span class="intro-label">Author's Note</span>
+    <div class="intro-text">
+      <p>The instinct is to treat this as a political club with a website. That instinct is wrong. What we are actually building is a media organization with a political consequence — and the difference matters at every level of the operation, from how we hire to how we publish to how we behave when our own side does something indefensible.</p>
+      <p>The diagrams that follow are not decoration. They are the operating logic of the organization. Each communicates one decision we have either made or must make. Read them in order. Argue with the ones you disagree with. Then we move.</p>
+    </div>
+  </section>
+
+  <!-- ============ SECTION I ============ -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">I.</div>
+      <h2 class="section-title">The Core Insight</h2>
+    </div>
+    <div class="section-body">
+      <aside class="section-aside">
+        <strong>Thesis</strong>
+        Media first.<br>
+        Politics second.<br>
+        Trust compounds.
+      </aside>
+      <div class="section-content">
+        <p>Disaffected Utah Republicans have nowhere credible to go. They are told a bill is conservative when it isn't. They are told a fight is principled when it's posturing. We do not solve this by becoming louder. We solve it by becoming <em>trusted</em> — by applying the same framework to every bill, every politician, every session.</p>
+        <p>Influence is the byproduct, not the goal. The day we invert that order, we become exactly what we set out to replace.</p>
+        <div class="diagram-frame">
+          <div class="mermaid">
+graph TD
+    A["Disaffected Utah Republicans<br/>have no trusted source"] --> B["We build a credible<br/>media organization"]
+    B --> C["Apply consistent conservative<br/>principles to every bill"]
+    C --> D["Deliver clear, sourced,<br/>plain-language analysis"]
+    D --> E["Trust compounds<br/>over time"]
+    E --> F["Trust enables real<br/>political influence"]
+
+    style B fill:#1a3a5c,color:#f1e9d4,stroke:#1a1f2e
+    style E fill:#3d6650,color:#f1e9d4,stroke:#1a1f2e
+    style F fill:#3d6650,color:#f1e9d4,stroke:#1a1f2e
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION II ============ -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">II.</div>
+      <h2 class="section-title">Organizational Structure</h2>
+    </div>
+    <div class="section-body">
+      <aside class="section-aside">
+        <strong>Principle</strong>
+        Minimal bureaucracy.<br>
+        Clear ownership.<br>
+        Pods, not committees.
+      </aside>
+      <div class="section-content">
+        <p>"Not too much hierarchy" is a slogan, not a structure. What we want is the opposite of bureaucracy without the absence of accountability. A small <strong>Steering Circle</strong> sets direction and breaks ties. <strong>Pods</strong> own their domains. Decisions live as close to the work as possible.</p>
+        <div class="diagram-frame">
+          <div class="mermaid">
+graph TD
+    SC["Steering Circle<br/>3-5 people<br/>Decision engine, not committee"]
+
+    SC --> P1["Digital & Data<br/>Website, CRM, analytics"]
+    SC --> P2["Content & Editorial<br/>Articles, bill analysis"]
+    SC --> P3["Marketing & Growth<br/>Social, email, events"]
+    SC --> P4["Political Ops<br/>Vetting, endorsements"]
+    SC --> P5["Development<br/>Fundraising, donors"]
+
+    style SC fill:#1a3a5c,color:#f1e9d4,stroke:#1a1f2e
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION III ============ -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">III.</div>
+      <h2 class="section-title">The Content Pipeline</h2>
+    </div>
+    <div class="section-body">
+      <aside class="section-aside">
+        <strong>Mechanics</strong>
+        Bill in.<br>
+        Analysis out.<br>
+        Nothing skips the gate.
+      </aside>
+      <div class="section-content">
+        <p>The pipeline is the product. A bill enters, gets scored against published principles, gets reviewed for soundness, and — only if it survives — gets published in plain language. Stories that aren't bulletproof are killed. The editor's job is to be willing to kill them.</p>
+        <div class="diagram-frame">
+          <div class="mermaid">
+flowchart LR
+    A["Bill drops in<br/>Utah Legislature"] --> B["Data layer<br/>auto-pulls it"]
+    B --> C["Editorial scores it<br/>against principles"]
+    C --> D{"Bulletproof?<br/>Sourced?<br/>Consistent?"}
+    D -->|No| E["Kill or revise"]
+    E --> C
+    D -->|Yes| F["Plain-language<br/>summary published"]
+    F --> G["Email + Social + Web"]
+
+    style D fill:#a87c2c,color:#f1e9d4,stroke:#1a1f2e
+    style F fill:#3d6650,color:#f1e9d4,stroke:#1a1f2e
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PULL QUOTE 1 ============ -->
+  <div class="pull-quote">
+    <p>We score bills, not politicians.<br>The framework is <em>public</em>.<br>Argue with the framework.</p>
+  </div>
+
+  <!-- ============ SECTION IV ============ -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">IV.</div>
+      <h2 class="section-title">Three Content Categories</h2>
+    </div>
+    <div class="section-body">
+      <aside class="section-aside">
+        <strong>Sequence</strong>
+        Awareness first.<br>
+        Standards next.<br>
+        Accountability last.
+      </aside>
+      <div class="section-content">
+        <p>Not all content carries the same risk. Awareness — votes, hearings, public events — is low-risk and builds the audience. Behavioral standards — calling out attacks on people instead of policies — is the differentiator. Accountability — conflicts of interest, undisclosed relationships — is high-risk and must be earned.</p>
+        <div class="diagram-frame">
+          <div class="mermaid">
+graph TD
+    A["Content Strategy"] --> B["AWARENESS<br/>Low risk · Start here"]
+    A --> C["BEHAVIORAL STANDARDS<br/>Medium risk · Differentiator"]
+    A --> D["ACCOUNTABILITY<br/>High risk · Earn the right"]
+
+    B --> B1["Public votes, hearings,<br/>events most people miss"]
+    C --> C1["Calling out attacks on people<br/>instead of policies or process"]
+    D --> D1["Conflicts of interest,<br/>undisclosed relationships"]
+
+    style B fill:#3d6650,color:#f1e9d4,stroke:#1a1f2e
+    style C fill:#a87c2c,color:#f1e9d4,stroke:#1a1f2e
+    style D fill:#8b2127,color:#f1e9d4,stroke:#1a1f2e
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION V ============ -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">V.</div>
+      <h2 class="section-title">The Scoring Rubric</h2>
+    </div>
+    <div class="section-body">
+      <aside class="section-aside">
+        <strong>Foundation</strong>
+        Define values.<br>
+        Publish them.<br>
+        Apply consistently.
+      </aside>
+      <div class="section-content">
+        <p>This is the load-bearing piece. "True conservative values" must be defined explicitly, in writing, before a single article is published. Without it, every analysis reads as opinion. With it, our conclusions are defensible because the framework is.</p>
+        <div class="diagram-frame">
+          <div class="mermaid">
+graph LR
+    Bill["Bill or<br/>Political Action"] --> R1{"Fiscal<br/>Responsibility"}
+    Bill --> R2{"Limited<br/>Government"}
+    Bill --> R3{"Federalism"}
+    Bill --> R4{"Individual<br/>Liberty"}
+    Bill --> R5{"Rule of<br/>Law"}
+
+    R1 --> Score["Public Score<br/>+ Reasoning<br/>+ Sources"]
+    R2 --> Score
+    R3 --> Score
+    R4 --> Score
+    R5 --> Score
+
+    Score --> Pub["Published Analysis"]
+
+    style Score fill:#1a3a5c,color:#f1e9d4,stroke:#1a1f2e
+    style Pub fill:#3d6650,color:#f1e9d4,stroke:#1a1f2e
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION VI ============ -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">VI.</div>
+      <h2 class="section-title">The Credibility Flywheel</h2>
+    </div>
+    <div class="section-body">
+      <aside class="section-aside">
+        <strong>Compounding</strong>
+        Slow at first.<br>
+        Then sudden.<br>
+        Then irreversible.
+      </aside>
+      <div class="section-content">
+        <p>Trust does not grow linearly. It compounds. The first six months feel like shouting into a void. Then a few hard calls go right and sources start coming to us instead of the other way around. The flywheel only turns if every step is consistent with the last.</p>
+        <div class="diagram-frame">
+          <div class="mermaid">
+graph LR
+    A["Apply framework<br/>consistently"] --> B["Get hard calls<br/>right early"]
+    B --> C["Trust grows"]
+    C --> D["Audience grows"]
+    D --> E["Sources come<br/>to us"]
+    E --> F["Better stories,<br/>deeper reach"]
+    F --> A
+
+    style A fill:#3d6650,color:#f1e9d4,stroke:#1a1f2e
+    style C fill:#3d6650,color:#f1e9d4,stroke:#1a1f2e
+    style E fill:#3d6650,color:#f1e9d4,stroke:#1a1f2e
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION VII ============ -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">VII.</div>
+      <h2 class="section-title">How Credibility Collapses</h2>
+    </div>
+    <div class="section-body">
+      <aside class="section-aside">
+        <strong>Failure Mode</strong>
+        Built over years.<br>
+        Lost in days.<br>
+        Print this on a wall.
+      </aside>
+      <div class="section-content">
+        <p>One sloppy analysis. One inconsistent ruling between Republicans and Democrats. That is all it takes. The flywheel that took years to spin up runs in reverse and faster. This diagram exists to be feared.</p>
+        <div class="diagram-frame">
+          <div class="mermaid">
+graph TD
+    A["One sloppy analysis<br/>OR<br/>One inconsistent ruling between<br/>Republicans and Democrats"]
+    A --> B["Publicly dismantled<br/>by critics"]
+    B --> C["Trust evaporates fast"]
+    C --> D["Audience walks"]
+    D --> E["We become just<br/>another partisan blog"]
+
+    style A fill:#8b2127,color:#f1e9d4,stroke:#1a1f2e
+    style E fill:#5a1418,color:#f1e9d4,stroke:#1a1f2e
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PULL QUOTE 2 ============ -->
+  <div class="pull-quote">
+    <p>The moment we let our own side slide<br>on something we'd nail the other side for,<br>the entire <em>operation</em> is over.</p>
+  </div>
+
+  <!-- ============ SECTION VIII ============ -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">VIII.</div>
+      <h2 class="section-title">Editorial Decision Gate</h2>
+    </div>
+    <div class="section-body">
+      <aside class="section-aside">
+        <strong>Discipline</strong>
+        Four questions.<br>
+        Every story.<br>
+        No exceptions.
+      </aside>
+      <div class="section-content">
+        <p>This is the operational expression of our values. The third question — <em>"would we publish this if it were the other side?"</em> — is the one that does the most work. Most outlets fail at exactly this gate. We do not.</p>
+        <div class="diagram-frame">
+          <div class="mermaid">
+flowchart TD
+    A["Story idea"] --> B{"Sourced to public<br/>record or named source?"}
+    B -->|No| Kill["KILL"]
+    B -->|Yes| C{"Applies our framework<br/>consistently?"}
+    C -->|No| Kill
+    C -->|Yes| D{"Would we publish this<br/>if it were the other side?"}
+    D -->|No| Kill
+    D -->|Yes| E{"Language attacks process<br/>and policy, not the person?"}
+    E -->|No| Revise["Revise tone"]
+    Revise --> E
+    E -->|Yes| Pub["PUBLISH"]
+
+    style Kill fill:#8b2127,color:#f1e9d4,stroke:#1a1f2e
+    style Pub fill:#3d6650,color:#f1e9d4,stroke:#1a1f2e
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION IX ============ -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">IX.</div>
+      <h2 class="section-title">Roles Required</h2>
+    </div>
+    <div class="section-body">
+      <aside class="section-aside">
+        <strong>Critical Hire</strong>
+        The editor.<br>
+        Without one,<br>nothing else matters.
+      </aside>
+      <div class="section-content">
+        <p>The <em>editor with spine</em> is the most important role and the hardest to fill. They must be willing to kill stories produced by colleagues and friends — and to do so before publication, not after. Everything else can be built around them. Nothing can substitute for them.</p>
+        <div class="diagram-frame">
+          <div class="mermaid">
+graph TD
+    A["Core Editorial Engine"] --> B["Scanner<br/>Monitors legislature,<br/>disclosures, finance"]
+    A --> C["Researcher / Writer<br/>Turns findings into<br/>sourced narratives"]
+    A --> D["Editor with Spine<br/>Kills stories that<br/>aren't bulletproof"]
+
+    E["Supporting Functions"] --> F["Web & Data<br/>Engineering"]
+    E --> G["Marketing & Growth"]
+    E --> H["Legal / GRAMA Expert<br/>Records, defamation"]
+    E --> I["Development<br/>Fundraising"]
+
+    style D fill:#8b2127,color:#f1e9d4,stroke:#1a1f2e
+    style A fill:#1a3a5c,color:#f1e9d4,stroke:#1a1f2e
+    style E fill:#1a3a5c,color:#f1e9d4,stroke:#1a1f2e
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION X ============ -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">X.</div>
+      <h2 class="section-title">What We Are &amp; Are Not</h2>
+    </div>
+    <div class="section-body">
+      <aside class="section-aside">
+        <strong>Identity</strong>
+        Define both columns.<br>
+        Hold the line<br>on both columns.
+      </aside>
+      <div class="section-content">
+        <p>Identity is what we say no to. Every drift toward the right column starts as a small concession that seemed reasonable at the time. The job of the steering circle is to recognize those moments and refuse them.</p>
+        <div class="diagram-frame">
+          <div class="mermaid">
+graph LR
+    subgraph WE_ARE["WHAT WE ARE"]
+    A1["A media organization"]
+    A2["Principle-driven"]
+    A3["Consistent across both sides"]
+    A4["Focused on arguments,<br/>processes, outcomes"]
+    end
+
+    subgraph WE_ARE_NOT["WHAT WE ARE NOT"]
+    B1["A party auxiliary"]
+    B2["Personality-driven"]
+    B3["Selectively outraged"]
+    B4["Attacking individuals"]
+    end
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION XI ============ -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">XI.</div>
+      <h2 class="section-title">Risk Map</h2>
+    </div>
+    <div class="section-body">
+      <aside class="section-aside">
+        <strong>Honest Threats</strong>
+        Each is real.<br>
+        Each has a fix.<br>
+        Name owners now.
+      </aside>
+      <div class="section-content">
+        <p>None of these risks are hypothetical. Every volunteer media organization fails for one of these reasons. The mitigations on the right exist for a reason — they are the difference between an idea that worked and an idea that ended in a Slack postmortem.</p>
+        <div class="diagram-frame">
+          <div class="mermaid">
+graph TD
+    R["Top Risks"] --> R1["Internal party pressure<br/>when calling out Republicans"]
+    R --> R2["Defamation exposure<br/>on accountability content"]
+    R --> R3["Volunteer burnout without<br/>async work + clear ownership"]
+    R --> R4["Brand confusion —<br/>'moderate' reads as soft"]
+    R --> R5["No fundraising owner =<br/>no sustainability"]
+
+    R1 --> M1["Published framework:<br/>'Argue with the framework'"]
+    R2 --> M2["Editor + legal review<br/>on accountability pieces"]
+    R3 --> M3["Outcome-based OKRs +<br/>public contribution ledger"]
+    R4 --> M4["Consider 'principled' or<br/>'constitutional' framing"]
+    R5 --> M5["Name a development<br/>owner from day one"]
+
+    style R fill:#8b2127,color:#f1e9d4,stroke:#1a1f2e
+    style M1 fill:#3d6650,color:#f1e9d4,stroke:#1a1f2e
+    style M2 fill:#3d6650,color:#f1e9d4,stroke:#1a1f2e
+    style M3 fill:#3d6650,color:#f1e9d4,stroke:#1a1f2e
+    style M4 fill:#3d6650,color:#f1e9d4,stroke:#1a1f2e
+    style M5 fill:#3d6650,color:#f1e9d4,stroke:#1a1f2e
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION XII ============ -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-number">XII.</div>
+      <h2 class="section-title">Mission Hierarchy</h2>
+    </div>
+    <div class="section-body">
+      <aside class="section-aside">
+        <strong>Subordination</strong>
+        Everything serves<br>the core product.<br>Or it gets cut.
+      </aside>
+      <div class="section-content">
+        <p>The website serves the analysis. The events serve the audience that consumes the analysis. The fundraising serves the editorial team that produces the analysis. If a proposed activity does not trace back to the core product, it does not happen. This is how organizations stay small enough to be excellent.</p>
+        <div class="diagram-frame">
+          <div class="mermaid">
+graph TD
+    A["CORE PRODUCT<br/>Trusted, principle-based<br/>analysis of Utah legislation"]
+
+    A --> B["Enables: Informed citizens"]
+    A --> C["Enables: Accountability"]
+    A --> D["Enables: Better candidates"]
+    A --> E["Enables: Real political influence"]
+
+    F["Website, social, events, fundraising,<br/>endorsements all serve the core"] -.-> A
+
+    style A fill:#1a3a5c,color:#f1e9d4,stroke:#1a1f2e
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ OPEN QUESTIONS ============ -->
+  <section class="questions">
+    <header class="questions-header">
+      <span class="questions-label">Unresolved &middot; For Group Discussion</span>
+      <h2 class="questions-title">Four questions that<br>shape everything else</h2>
+    </header>
+    <ol class="questions-list">
+      <li>
+        <span class="question-num">i.</span>
+        <div class="question-body">
+          <strong>Who is the editor with spine?</strong>
+          This person makes or breaks the operation. The technical infrastructure can be built by anyone. The discipline to kill stories cannot.
+        </div>
+      </li>
+      <li>
+        <span class="question-num">ii.</span>
+        <div class="question-body">
+          <strong>What is the first bill or issue we cover?</strong>
+          Pick one where we can demonstrate the gap between what people were told and what's actually true. The first piece sets the standard for every piece that follows.
+        </div>
+      </li>
+      <li>
+        <span class="question-num">iii.</span>
+        <div class="question-body">
+          <strong>What do we name ourselves?</strong>
+          "Moderate Republican" may signal soft to the very people we want to reach. "Principled" or "Constitutional" framing maps closer to what we actually are — we are not moving to the center, we are holding the original line.
+        </div>
+      </li>
+      <li>
+        <span class="question-num">iv.</span>
+        <div class="question-body">
+          <strong>Inform-first or outcome-first?</strong>
+          Inform-first builds slower but lasts longer and is harder to attack. Outcome-first is more urgent but makes us a target immediately. This decision determines tone, urgency, and how soon we make enemies.
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ============ COLOPHON ============ -->
+  <footer class="colophon">
+    <div class="colophon-ornament">✦ &middot; ✦ &middot; ✦</div>
+    <div>End of document &middot; Twelve diagrams &middot; One thesis</div>
+    <div>Set in Fraunces &amp; Newsreader</div>
+    <div style="margin-top: 16px; color: var(--crimson);">Argue with the framework.</div>
+  </footer>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'base',
+    fontFamily: 'Newsreader, serif',
+    themeVariables: {
+      background: '#ebe2c8',
+      primaryColor: '#f1e9d4',
+      primaryTextColor: '#1a1f2e',
+      primaryBorderColor: '#1a1f2e',
+      lineColor: '#4a4d5a',
+      secondaryColor: '#e6dcc1',
+      tertiaryColor: '#f1e9d4',
+      mainBkg: '#f1e9d4',
+      secondBkg: '#e6dcc1',
+      tertiaryBkg: '#f1e9d4',
+      nodeBorder: '#1a1f2e',
+      clusterBkg: 'rgba(26, 31, 46, 0.04)',
+      clusterBorder: '#1a1f2e',
+      defaultLinkColor: '#4a4d5a',
+      titleColor: '#1a1f2e',
+      edgeLabelBackground: '#f1e9d4',
+      labelBackground: '#f1e9d4',
+      textColor: '#1a1f2e',
+      fontSize: '14px'
+    },
+    flowchart: {
+      htmlLabels: true,
+      curve: 'basis',
+      padding: 20,
+      nodeSpacing: 50,
+      rankSpacing: 60
+    }
+  });
+</script>
+
+</body>
+</html>
